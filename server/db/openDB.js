@@ -1,11 +1,15 @@
 //konekcija prema SQL bazi 
-import sqlite3 from "sqlite3";
-import { open } from "sqlite";
-//Ovo je mjesto gdje se baza podataka otvara
-export async function openDB() {
-    return open ({
-        __filename: "./server/.db/openDB",
-        driver: sqlite3.Database
-    });
+import Database from "better-sqlite3";
 
-}
+//Ovo je mjesto gdje se baza podataka otvara
+export function openDB() {
+    return new Database.Database('./server/Populera-produkter.db', (err) => {
+        if (err) {
+            console.error("Fel när databas öppnas:", err.message);
+        } else {
+            console.log("Databas öppnad.");
+        }
+       
+
+    }); 
+}   

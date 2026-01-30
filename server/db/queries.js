@@ -1,39 +1,32 @@
-//Ovdje pišemo sve SELECT i INSERT upite
-
-//server/db/queries.js
+//Ovdje pisemo kod za upite prema bazi podataka
+// server/db/queries.js
 import { openDB } from "./openDB.js";
-
 // 1. Popularni proizvodi (8 kom)
-export async function getPopuleraProducts()
-{ 
-const db = await openDB();
-return db.all("SELECT * FROM products LIMIT 8")}
-
-// 2. Proizvod po slug-u
-export async function getPoductsBySlug(slag) {
-    const db = await openDB();
-    return db.get("SELECT * FROM products WHERE slug = ?", [slug]);
+export function getPopularProducts() {
+  const db = openDB();
+  return db.prepare("SELECT * FROM products LIMIT 8").all();
 }
-
+// 2. Proizvod po slug-u
+export function getProductBySlug(slug) {
+  const db = openDB();
+  return db.prepare("SELECT * FROM products WHERE slug = ?").get(slug);
+}
 // 3. Pretraga proizvoda
-export async function searchProducts(term) {
-    const db = await openDB();
-    return db.all("SELECT * FROM products WHERE name LIKE ?", [`%${term}%`]); 
-
+export function searchProducts(term) {
+  const db = openDB();
+  return db.prepare("SELECT * FROM products WHERE name LIKE ?").all(`%${term}%`);
 }
 // 4. Admin — lista svih proizvoda
-export async function getAllProducts() {
-const db = await openDB();
-return db.all("SELECT * FROM all products"); 
+export function getAllProducts() {
+  const db = openDB();
+  return db.prepare("SELECT * FROM products").all();
 }
 // 5. Admin — dodavanje proizvoda
-export async function createProduct(product) {
-  const db = await openDB();
+export function createProduct(product) {
+  const db = openDB();
   const { name, description, image, brand, sku, price, slug } = product;
-
-  return db.run(
+  return db.prepare(
     `INSERT INTO products (name, description, image, brand, sku, price, slug)
-     VALUES (?, ?, ?, ?, ?, ?, ?)`,
-    [name, description, image, brand, sku, price, slug]
-  );
+     VALUES (?, ?, ?, ?, ?, ?, ?)`
+  ).run(name, description, image, brand, sku, price, slug);
 }

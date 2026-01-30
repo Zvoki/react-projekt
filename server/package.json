@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  
   "scripts": {
-    "dev": "nodemon server"
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "better-sqlite3": "^12.6.2",
     "express": "^5.2.1",

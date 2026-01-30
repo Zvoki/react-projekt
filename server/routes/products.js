@@ -1,78 +1,8 @@
+// ...existing code...
 import express from "express";
-import {openDb} from "../db.js"
-
+import { popular, productDetails } from "../controllers/productsController.js";
 const router = express.Router();
 
-
-router.get("/search", async (req,res) => {
-    const q = req.query.q || "";
-    const sql =`
-    SELECT *,
-    CAST(REPLACE(price, ' SEK', ) AS INTEGER) AS price_numer
-    FROM products
-    WHERE name LIKE ? OR brand LIKE ? OR sku LIKE ? `;
-    
-    const like = `%${q}%`;
-    const rows = await db.all(sql, [like, like, like]);
-    res.json(rows);
- 
-});
-/**GET /api/products
-   Vraća sve proizvode (homepage + admin lista) */
-   router.get("/", async (req, res) => {
-  const db = await openDb();
-
-  const sql = `
-    SELECT *,
-      CAST(REPLACE(price, ' SEK', '') AS INTEGER) AS price_numeric
-    FROM products
-  `;
-
-  const rows = await db.all(sql);
-  res.json(rows);
-});
-
-/**GET /api/products/:slug
-   Vraća jedan proizvod po slug-u (detaljna stranica) */
-   router.get("/:slug", async (req, res) => {
-  const db = await openDb();
-
-  const product = await db.get(
-    "SELECT * FROM products WHERE slug = ?",
-    [req.params.slug]
-  );
-
-  if (!product) {
-    return res.status(404).json({ error: "Product not found" });
-  }
-
-  res.json(product);
-});
-
-/** POST /api/products
-   Dodavanje novog proizvoda (admin)*/
-   router.post("/", async (req, res) => {
-  const { image_url, namn, description, price, brand, sku } = req.body;
-
-  if (!image_url || !namn || !description || !price || !brand || !sku) {
-    return res.status(400).json({ error: "Missing fields" });
-  }
-
-  // Generišemo slug iz imena
-  const slug = namn
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-]/g, "");
-
-  const db = await openDb();
-
-  await db.run(
-    `INSERT INTO products (image_url, namn, description, price, brand, sku, slug)
-     VALUES (?, ?, ?, ?, ?, ?, ?)`,
-    [image_url, namn, description, price, brand, sku, slug]
-  );
-
-  res.json({ message: "Product added", slug });
-});
-
+router.get("/popular", popular);
+router.get("/:slug", productDetails);
 export default router;

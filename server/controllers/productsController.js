@@ -1,14 +1,13 @@
 // server/controllers/productsController.js
 import { getPopularProducts, getProductBySlug } from "../db/queries.js"
 
-export async function popular(req, res) {
-    const products = await getPopularProducts();
-    res.json(products);
-    
+export function popular(req, res) {
+        const products = getPopularProducts();
+        res.json(products);
 }
-export async function productDetails(req, res) {
-    const product = await getProductBySlug(req.params.slug);
-    res.json(product);
+export function productDetails(req, res) {
+        const product = getProductBySlug(req.params.slug);
+        res.json(product);
 }
 
 /**Kako funkcionise popular()

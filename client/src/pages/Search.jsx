@@ -11,6 +11,11 @@ import { useEffect, useState } from "react";
 // čita query string iz URL‑a (npr. ?q=telefon), a Link pravi
 //  navigacijske linkove bez reloada stranice.
 import { useSearchParams, Link } from "react-router-dom";
+import ProductCard from "../components/ProductCard";
+
+//params.get("q") čita vrijednost parametra q iz query 
+// stringa, npr. ako je URL /search?q=telefon, q će biti 
+// "telefon".
 
 //|| "" osigurava da q bude prazan string ako parametar ne
 //  postoji (sprječava greške).
@@ -22,13 +27,28 @@ export default function Search () {
 //setResults mijenja to stanje i izaziva ponovno renderovanje
 //  komponente.
 
+//koristio sam encodeURIComponent(q) pri fetchu da izbjegneš probleme sa specijalnim znakovima.
 
     useEffect  (() => {
-        fetch(`http://localhost:3001/search?q=${q}`)
+        fetch(`http://localhost:8000/search?q=${encodeURIComponent(q)}`)
         .then(res => res.json())
         .then(data => setResults(data));
     }, [q]);
-    /**Šta radi: nakon prvog rendera i svaki put kad se q
+  
+    return (
+        <div>
+            <h2>Hittade { results.length } produkter</h2>
+            
+      <div className="grid">
+        {results.map(p => (
+           <ProductCard key={p.id} product={p} />
+        ))}
+      </div>
+      
+        </div>
+    )   
+}
+  /**Šta radi: nakon prvog rendera i svaki put kad se q
  *  promijeni, React pokreće funkciju unutar useEffect i 
  * izvršava fetch. To znači: kad korisnik promijeni pretragu
  *  (ili URL), komponenta automatski dohvaća nove rezultate
@@ -46,19 +66,4 @@ key={p.id} je obavezno za listu u Reactu da bi React efikasno
 to={/products/${p.slug}} vodi na stranicu proizvoda koristeći
  slug.
      */
-    return (
-        <div>
-            <h2>Hittade { results.length } produkter</h2>
-            
-      <div className="grid">
-        {results.map(p => (
-          <Link key={p.id} to={`/products/${p.slug}`} className="card">
-            <img src={p.image} alt={p.name} />
-            <h3>{p.name}</h3>
-            <p>{p.price} SEK</p>
-          </Link>
-        ))}
-      </div>
-        </div>
-    )   
-}
+ 

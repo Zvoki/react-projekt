@@ -1,0 +1,11 @@
+<!-- Styles for product card-->
+.product-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.product-card:hover {
+  transform: scale(1.02);
+}

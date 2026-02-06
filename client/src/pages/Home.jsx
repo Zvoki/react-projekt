@@ -3,13 +3,16 @@ svaki vodi na detaljnu stranicu
 klik na srce ne radi ništa 
  */
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
+import ProductCard from "../components/ProductCard";
+import Hero from "../components/Hero";
 
 export default function Home() {
     const [products, setProducts] = useState([]);
     useEffect(() => {
         // Fetch popular products from the server
-        fetch("http://localhost:3001/products/popular")
+        fetch("http://localhost:8000/products/popular")
+
             //pokazuje tijelo odgovora kao JSON
             .then(res => res.json())
             //fetch + res.json() dohvaća i parsira JSON; setProducts ažurira stanje i pokreće render. 
@@ -18,21 +21,16 @@ export default function Home() {
             //  prikaže listu. Važno: setProducts je asinhrono u smislu React lifecyclea — ažuriranje stanja ne mijenja odmah products u istom 
             // ticku, ali će uzrokovati sljedeći render s novim vrijednostima.
             .then(data => setProducts(data));
-    }, []);// useEffect s praznim nizom izvršava se jednom nakon mounta.
+    }, []);
 
-    return (
-        <div>
-            <h2>Populera Produkter</h2>
-            <div className="grid">
-                {products.map(p => (
-                <Link key={p.di} to={`/products/${p.slug}`} className="card">
-                    <img src={p.image} alt={p.name} />
-                    <h3>{p.name}</h3>
-                    <p>{p.price} SEK</p>
-                </Link>
-
-            ))}
-            </div>
-        </div>
-    );
-}
+    // prikaži najviše 8 proizvoda
+     const visible = products.slice(0, 8);
+      return ( 
+      <div>
+         <Hero />
+         <h2>Populera Produkter</h2>
+          <div className="grid"> {visible.map(p => 
+          ( <ProductCard key={p.id} product={p} /> ))} 
+          </div> 
+          </div> 
+          ); }

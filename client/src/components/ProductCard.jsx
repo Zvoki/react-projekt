@@ -11,9 +11,12 @@ import { formatPrice } from "../utils/formatPrice";
 export default function ProductCard({ product }) {
     return (
         <Link to={`/products/${product.slug}` } className="product-card">
-          <img src={product.image} alt={product.name} />
+           <div className="image-wrapper">
+          <img src={product.image_url} alt={product.namn} className="product-image" />
+           <img src="/images/suit-heart-fill.svg" alt="Favorite" className="heart-icon" />
+           </div> 
           <div className="info">
-            <h3>{product.name}</h3>
+            <h3>{product.namn}</h3>
             <p>{formatPrice(product.price)}</p>
             </div>  
         </Link>

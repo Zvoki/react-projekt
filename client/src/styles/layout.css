@@ -1,74 +1,75 @@
-<!-- Styles for layout structure, Header, footer, grid layout-->
-.site-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #e3e3e3;
-}
-.logo {
-  font-weight: 700;
-}
+/* ===== HEADER (NOVI) ===== */
 
-.search-form {
-  flex: 1;
-}
-
-.search-form input {
+.header {
   width: 100%;
-  padding: 0.4rem 0.6rem;
-  border-radius: 999px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+
+/* RED 1 – Logo + Search + Ikone */
+.header-top {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 16px;
+}
+
+.logo img.responsive {
+  width: 200px;
+  height: auto;
+}
+
+/* Search + Ikone */
+.logo-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.search-bar {
+  flex: 1;
+  margin-right: 12px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 8px;
   border: 1px solid #ccc;
 }
 
-/* nav + hamburger */
-
-.main-nav {
-  display: none;
-  gap: 1rem;
-}
-
-.hamburger {
+.icons img {
   width: 28px;
-  height: 22px;
-  border: none;
-  background: none;
-  padding: 0;
+  height: 28px;
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+
+.navbar {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  /*flex-direction: column;*/
+  align-items: flex-start;
+  margin-bottom: 3%;
+
 }
 
-.hamburger span {
-  height: 3px;
-  border-radius: 999px;
-  background: #333;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-/* mobile nav dropdown */
-.main-nav.open {
-  position: absolute;
-  top: 56px;
-  left: 0;
-  right: 0;
-  background: #fff;
-  border-bottom: 1px solid #e3e3e3;
+.navbar .tags {
   display: flex;
+  margin: 0;
+  padding: 0 0 0 1%;
   flex-direction: column;
-  padding: 0.75rem 1rem;
+  list-style: none;
+  margin-left: 4px;
 }
 
-/* hamburger animacija */
-.hamburger.is-open span:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
+
+
+.tags li a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
 }
-.hamburger.is-open span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.is-open span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
-}
+
 .hero {
   display: flex;
   flex-direction: column;
@@ -87,56 +88,177 @@
 }
 
 .hero-image img {
+  display: block;
+  width: 100%;
   border-radius: 8px;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  border-bottom: 1px solid #ddd;
+/*heart.icon unutar slike*/
+.product-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
-footer {
+.image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.product-image {
+  width: 100%;
+  display: block;
+}
+
+.heart-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  z-index: 5;
+
+}
+
+/*Kraj za heart-icon*/
+.spots-container {
+  display: none;
+  /* sakrij na mobilnim ekranima */
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+/*footer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 2rem;
   background: #f5f5f5;
-}
+}*/
 
-main {
+.main {
   padding: 1rem;
 }
+
 .grid {
   display: grid;
+
   gap: 1rem;
-}
-.grid {
-  grid-template-columns: repeat(2, 1fr);
-}
-.footer-desktop {
-  display: none;
+  grid-template-columns: 1fr;
 }
 
-.footer-mobile {
+
+
+/* Mobilni prikaz */
+.hide-640-1024 {
   display: block;
 }
 
+.footer-desktop {
+  display: none;
+  padding: 2rem;
+  background: #f5f5f5;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.footer-columns {
+display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
+ 
+}
+
+/* Osnovni stil svakog reda */
+.footer-row {
+  width: 100%;
+  padding: 12px 16px;
+}
+
+/* Shopping red – svijetloplava pozadina, lijevo poravnanje */
+.shopping-row {
+  background-color: #e6f2ff;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* Mina Sidor + Kundtjänst – dva reda lijevo */
+.links-row {
+  border-top: 1px solid black;
+  /* gornja vanjska linija */
+  border-bottom: 1px solid black;
+  /* donja vanjska linija */
+  padding: 8px 16px;
+}
+
+.links-row p {
+  margin: 4px 0;
+  text-align: left;
+}
+
+/* Samo jedna linija između dva reda */
+.links-row p+p {
+  border-top: 1px solid black;
+  /* unutrašnja linija */
+  padding-top: 6px;
+  width: 100%;
+}
+
+
+/* Freaky Fashion – centrirano, viši red */
+.brand-row {
+  text-align: center;
+  height: 3rem;
+  /* oko 1.5 visine */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  border: solid 1px black;
+}
+
+/* Stilovi za sekciju smaikoner */
+.smaikoner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 10px 0 10px 10px;
+  /*top, right, bottom i left*/
+}
+
+
+.smal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.smal>img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 @media (min-width: 640px) {
-  .hamburger {
+  .hide-640-1024 {
     display: none;
   }
 
-  .main-nav {
+  .footer-desktop {
     display: flex;
+
   }
 
-  .main-nav.open {
-    position: static;
-    flex-direction: row;
-    border: none;
-    padding: 0;
-  }
   .hero {
     flex-direction: row;
     align-items: center;
@@ -147,15 +269,49 @@ main {
     font-size: 2.4rem;
   }
 
- 
+
   .grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
- }
+  .smaikoner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, minmax(10px, auto));
+    /* justify-content: center;
+    width: auto;
+    height: auto;
+    padding: 0 20px;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    text-align: center;
+    place-items: center;*/
+  }
 
+  .smal>img {
+    padding: 4%;
+    width: 100px;
+    height: 100px;
+  }
+
+}
 
 @media (min-width: 1024px) {
+  .smaikoner {
+    display: grid;
+  }
+
+  .smal>img {
+    padding: 4%;
+    width: 100px;
+    height: 100px;
+  }
+
+  .spots-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .hero {
     padding: 3rem 4rem;
   }
@@ -167,16 +323,41 @@ main {
   .grid {
     grid-template-columns: repeat(4, 1fr);
   }
+
   .product-card {
-  border: 1px solid #e3e3e3;
-  border-radius: 8px;
-  padding: 0.75rem;
-  background: #fff;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+    display: block;
+    border: 1px solid #e3e3e3;
+    border-radius: 8px;
+    padding: 0.75rem;
+    background: #fff;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  }
 }
 
-.product-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+.spot {
+  width: 100%;
 }
+
+.image-container {
+  position: relative;
+}
+
+.image-container img.responsive {
+  width: 100%;
+  display: block;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  z-index: 5;
 }

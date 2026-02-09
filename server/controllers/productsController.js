@@ -1,5 +1,5 @@
 // server/controllers/productsController.js
-import { getPopularProducts, getProductBySlug } from "../db/queries.js"
+import { getPopularProducts, getProductBySlug, getSimilarProducts } from "../db/queries.js"
 
 export function popular(req, res) {
         const products = getPopularProducts();
@@ -7,7 +7,12 @@ export function popular(req, res) {
 }
 export function productDetails(req, res) {
         const product = getProductBySlug(req.params.slug);
-        res.json(product);
+        if (!product) {
+                return res.status(404).json({ error: "Proizvod nije pronađen" });
+        }
+        // Dohvati slične proizvode po brandu
+        const similar = getSimilarProducts(product.id, product.brand);
+        res.json({ ...product, similar });
 }
 
 /**Kako funkcionise popular()

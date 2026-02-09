@@ -1,6 +1,7 @@
-import Layout from "./components/Layout";
-import { useState } from 'react'
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Layout from "./components/Layout";
+import "./styles/layout.css"
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Product from "./pages/Product";
@@ -11,18 +12,18 @@ import './App.css'
 
 export default function App() {
 
+  
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />} />
-        <Route path="/" element={<Home />} />
-        <Route path='/search' element={<Search />} />
-        <Route path="/products/:slug" element={<Product />} />
+        <Route element={<Layout />}>
+           <Route path="/" element={<Home />} />
+          <Route path='/search' element={<Search />} />
+          <Route path="/products/:slug" element={<Product />} />
+          <Route path="/admin/products" element={<AdminList />} />
+          <Route path='/admin/products/new' element={<AdminNew />} />
+        </Route>
       </Routes>
-      <Route path="/admin/products" element={<AdminList />} />
-      <Route path='/admin/products/new' element={<AdminNew />} />
-
-
     </BrowserRouter>
 
   );

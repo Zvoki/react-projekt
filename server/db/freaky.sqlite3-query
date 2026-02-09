@@ -1,5 +1,6 @@
 -- database: ./Populera-produkter.db
-
+ALTER TABLE products ADD COLUMN description TEXT;
+ALTER TABLE products ADD COLUMN slug TEXT UNIQUE;
 SELECT * FROM "table-name";
 CREATE TABLE products (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

@@ -22,11 +22,11 @@ export default function Product() {
 
   return (
     <div>
-      <h1>{product.name}</h1>
+      <h1>{product.namn}</h1>
 
-      <img src={product.image} alt={product.name} />
+      <img src={product.image_url} alt={product.namn} />
       <p>{product.description}</p>
-      <p>{product.price} SEK</p>
+      <p>{product.price}</p>
 
       <button>Lägg i varukorg</button>
 

@@ -134,9 +134,9 @@ export default function MenuAndFooter() {
       </div>
 
       {/* DESKTOP FOOTER (prikazuje se >= 640px) */}
-      <footer class="footer-desktop">
+      <footer className="footer-desktop">
 
-        <div class="footer-columns">
+        <div className="footer-columns">
           <div>
             <h4>Shopping</h4>
             <p>Vinterjackor</p>
@@ -159,7 +159,7 @@ export default function MenuAndFooter() {
           </div>
         </div>
 
-        <div class="footer-bottom">
+        <div className="footer-bottom">
           <p>© Freaky Fashion</p>
         </div>
 

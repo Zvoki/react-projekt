@@ -1,0 +1,164 @@
+.admin-body-wraper {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+   background: #f4f4f4; 
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Gornji crni blok */
+.admin-header {
+  background-color: black;
+  color: white;
+  text-align: left;
+  padding: 15px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Kontejner u kojem sidebar i glavni sadržaj leže jedan pored drugog */
+.container {
+  display: flex;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Sidebar – blok „Produkter” */
+.sidebar {
+  position:fixed;
+  top: 70px;
+  left: 0;
+  bottom: 0;
+  width: 10%;
+  background-color: #f4f4f4;
+ 
+ z-index: 100;
+}
+
+/* Glavni sadržaj */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  margin-left: 80px;
+}
+
+/* Forma organizovana u jednu kolonu */
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  /* Razmak između elemenata */
+  align-items: flex-start;
+  /* Levo poravnanje */
+  max-width: 400px;
+  /* Po želji, možeš ograničiti širinu */
+}
+
+/* Stil za etikete i polja */
+.form-column label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.form-column input,
+.form-column textarea,
+.form-column button {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-column button {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #b8b3b3; /* Crna dugmad kao header */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.form-column button:hover {
+  background-color: #0056b3;
+}
+
+.sidebar>nav {
+  display: none;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ccc;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+}
+thead {
+  background-color: #bbb7b7;
+}
+/* Pocetak za new-products */
+/* Sidebar – blok „Produkter” */
+/* Gornji crni blok */
+/* Kontejner u kojem sidebar i glavni sadržaj leže jedan pored drugog */
+.new-container {
+  display: flex;
+  width: 100%;
+}
+.new-admin-header {
+  background-color: black;
+  color: white;
+  text-align: left;
+  padding: 15px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.new-sidebar {
+  width: 25%;
+  background-color: #f4f4f4;
+  padding: 20px;
+  min-height: 100vh;
+}
+/* Glavni sadržaj */
+.new-main-content {
+  flex-grow: 1;
+  padding: 20px;
+}
+/* Forma organizovana u jednu kolonu */
+.new-form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  /* Razmak između elemenata */
+  align-items: flex-start;
+  /* Levo poravnanje */
+  max-width: 400px;
+  /* Po želji, možeš ograničiti širinu */
+}
+/* Stil za etikete i polja */
+.new-form-column label {
+  font-weight: bold;
+}
+.new-form-column input,
+.new-form-column textarea,
+.new-form-column button {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+.new-form-column button {
+margin-top: 10px;
+}

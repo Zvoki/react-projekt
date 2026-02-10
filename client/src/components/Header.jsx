@@ -31,9 +31,9 @@ export default function Header() {
         {/* Search + Ikone */}
         <div className="logo-bottom">
 
-          {/* Search bar */}
+          {/* Search bar  ovo sam dodao ispod  className="input-field" id="search-input" name="q"*/}
           <form className="search-bar" onSubmit={handleSubmit}>
-            <input
+            <input className="input-field" id="search-input" name="q"
               type="search"
               placeholder="Sök bland produkter"
               value={q}
@@ -43,8 +43,8 @@ export default function Header() {
 
           {/* Ikone */}
           <div className="icons">
-           <a href=""> <img src="/images/suit-heart-fill.svg" alt="Hjärta" /></a>
-            <a href=""><img src="/images/basket2.svg" alt="Väska" /></a>
+           <a><img src="/images/suit-heart-fill.svg" alt="Hjärta" /></a>
+            <a><img src="/images/basket2.svg" alt="Väska" /></a>
           </div>
         </div>
       </div>

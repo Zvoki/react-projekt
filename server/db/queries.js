@@ -62,7 +62,7 @@ export function createProduct(product) {
   const db = openDB();
   const { namn, description, image_url, brand, sku, price, slug } = product;
   return db.prepare(
-    `INSERT INTO products (namn, description, image, brand, sku, price, slug)
+    `INSERT INTO products (namn, description, image_url, brand, sku, price, slug)
      VALUES (?, ?, ?, ?, ?, ?, ?)`
   ).run(namn, description, image_url, brand, sku, price, slug);
 }

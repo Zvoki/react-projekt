@@ -7,6 +7,7 @@ import Search from "./pages/Search";
 import Product from "./pages/Product";
 import AdminList from "./pages/AdminList";
 import AdminNew from "./pages/AdminNew";
+import AdminLayout from './components/AdminLayout';
 
 import './App.css'
 
@@ -20,8 +21,12 @@ export default function App() {
            <Route path="/" element={<Home />} />
           <Route path='/search' element={<Search />} />
           <Route path="/products/:slug" element={<Product />} />
-          <Route path="/admin/products" element={<AdminList />} />
-          <Route path='/admin/products/new' element={<AdminNew />} />
+          </Route>
+        {/* ADMIN DEO: Potpuno odvojen izgled */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="products" element={<AdminList />} />
+          <Route path="products/new" element={<AdminNew />} />
+        
         </Route>
       </Routes>
     </BrowserRouter>

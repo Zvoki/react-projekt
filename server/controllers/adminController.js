@@ -2,12 +2,12 @@
 import { getAllProducts, createProduct } from "../db/queries.js";
 
 export async function adminList(req, res) {
-  const products = await getAllProducts();
+  const products = getAllProducts();
   res.json(products);
 }
 
 export async function adminCreate(req, res) {
-  await createProduct(req.body);
+ createProduct(req.body);
   res.json({ message: "Product created" });
 }
 

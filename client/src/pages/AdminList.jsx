@@ -1,3 +1,50 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+export default function AdminList() {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:8000/admin/products")
+            .then(res => res.json())
+            .then(data => setProducts(data))
+            .catch(err => console.error("Greška pri učitavanju:", err));
+    }, []);
+
+    return (
+        <section>
+            {/* Ovaj deo pravi identičan raspored kao u starom projektu */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <h1>Produkter</h1>
+                <Link to="/admin/products/new">
+                    <button>Ny produkt</button>
+                </Link>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Namn</th>
+                        <th>SKU</th>
+                        <th>Pris</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {products.map(p => (
+                        <tr key={p.id || p.sku}>
+                            {/* Proveri da li tvoja baza vraća p.name ili p.namn kao u starom kodu */}
+                            <td>{p.name || p.namn}</td>
+                            <td>{p.sku}</td>
+                            <td>{p.price}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </section>
+    );
+}
+
 /*prikazati tabelu svih proizvoda 
 link “Ny produkt” vodi na formu */
 
@@ -55,11 +102,6 @@ useEffect(() => {
 ## 🧩 Ukratko:
 
 - Komponenta se učita.
-- useEffect se pokrene jednom.
-- fetch uzme listu proizvoda sa servera.
-- Ti proizvodi se smeste u `products` state.
-- Kasnije možeš da ih prikažeš u JSX-u.
-*/
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -68,37 +110,47 @@ export default function AdminList() {
 
     useEffect(() => {
         fetch("http://localhost:8000/admin/products")
-
             .then(res => res.json())
-            .then(data => setProducts(data));
+            .then(data => setProducts(data))
+            .catch(err => console.error("Greška pri učitavanju:", err));
     }, []);
+
     return (
-    <div>
-        <h1>Produkter</h1>
-        <Link to="/admin/products/new">Ny produkt</Link>
-        <table>
-            <thead>
-                <tr>
-                    <th>Namn</th>
-                    <th>SKU</th>
-                    <th>Pris</th>
-                </tr>
-            </thead>
+        <section>
+            
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-            <tbody>
-                {products.map(p => (
-                    <tr key={p.id}>
-                    <td>{p.name}</td>
-                    <td>{p.sku}</td>
-                    <td>{p.price}</td>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <h1>Produkter</h1>
+                <Link to="/admin/products/new">
+                    <button>Ny produkt</button>
+                </Link>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Namn</th>
+                        <th>SKU</th>
+                        <th>Pris</th>
                     </tr>
-                ))}
-            </tbody>
-        </table>
-    </div>
-)
+                </thead>
 
-}
+                <tbody>
+                    {products.map(p => (
+                        <tr key={p.id || p.sku}>
+                           
+                            <td>{p.name || p.namn}</td>
+                            <td>{p.sku}</td>
+                            <td>{p.price}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </section >
+    );
+
 
 
 /*

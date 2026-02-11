@@ -21,23 +21,31 @@ export default function Product() {
   if (!product) return <p>Laddar...</p>;
 
   return (
-    <div>
-      <h1>{product.namn}</h1>
 
-      <img src={product.image_url} alt={product.namn} />
-      <p>{product.description}</p>
-      <p>{product.price}</p>
-
-      <button>Lägg i varukorg</button>
-
-      <h3>Liknande produkter</h3>
-
-      <div className="grid">
-        {product.similar?.map(p => (
-          <ProductCard key={p.id} product={p} />
-        ))}
-      </div>
+<div className="product-view">
+  <div className="product-view__main">
+    <div className="product-view__image-container">
+      <img className="product-view__image" src={product.image_url} alt={product.namn} />
     </div>
+    
+    <div className="product-view__content">
+      <h1 className="product-view__title">{product.namn}</h1>
+      <p className="product-view__brand">Levis</p>
+      <p className="product-view__description">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit...
+      </p>
+      <p className="product-view__price">{product.price} SEK</p>
+      <button className="product-view__button">Lägg i varukorg</button>
+    </div>
+  </div>
+
+  <h3 className="product-view__similar-title">Liknande produkter</h3>
+  <div className="product-view__grid">
+    {product.similar?.map(p => (
+      <ProductCard key={p.id} product={p} />
+    ))}
+  </div>
+</div>
   );
 }
 

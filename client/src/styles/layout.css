@@ -1,3 +1,7 @@
+.logo {
+  display: flex;
+  align-items: flex-start;
+}
 .responsive {
   max-width: 100%;
   height: auto;
@@ -57,6 +61,7 @@
   margin-left: 12px;
   cursor: pointer;
 }
+
 
 
 .navbar {
@@ -126,7 +131,9 @@
 .image-wrapper {
   position: relative;
   width: 100%;
+  overflow: hidden; /*dodao sad*/
 }
+
 
 
 
@@ -149,12 +156,6 @@ padding-bottom: 20px;
   margin-bottom: 40px;
 }
 
-/*footer {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  padding: 2rem;
-  background: #f5f5f5;
-}*/
 
 .main {
   padding: 1rem;
@@ -269,11 +270,72 @@ padding-bottom: 20px;
   object-fit: cover;
   border-radius: 50%;
 }
+ div button {
+  margin-bottom: 20px;
+}
+/* Stilovi za mobilne ekrane (<640px) */
+.product-view__main {
+  display: flex;
+  flex-direction: column; /* Sve je jedno ispod drugog */
+  gap: 20px;
+  padding: 15px;
+}
+
+.product-view__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.product-view__content {
+  text-align: left; /* Možete promeniti u 'center' za mobilni ako želite */
+}
+
+.product-view__title {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.product-view__brand {
+  color: #666;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.product-view__button {
+  width: 100%; /* Dugme je lakše za klik na mobilnom ako je široko */
+  padding: 15px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Dovde Stilovi za mobilne ekrane (<640px) */
 
 @media (min-width: 640px) {
+/* Osnovni stilovi za velike ekrane (>640px) za Product.jsx */
+ .product-view__main {
+    flex-direction: row; /* Slika levo, tekst desno */
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+  .product-view__image-container,
+  .product-view__content {
+    flex: 1; /* Obe kolone zauzimaju podjednako (50/50) */
+  }
+
+  .product-view__button {
+    width: auto; /* Dugme se vraća na prirodnu veličinu */
+    padding: 12px 30px;
+  }
+/*Dovde izgled za Product.jsx*/
   .hide-640-1024 {
     display: none;
   }
+
 
   /*Pocetak Stil za logo, za trazenje polje i ikonice*/
   /* Gornji header – sve u jednom redu */
@@ -369,6 +431,45 @@ padding-bottom: 20px;
 }
 
 @media (min-width: 1024px) {
+  /* Kada korisnik pređe mišem preko slike na velikim ekranima */
+.product-image {
+   width: 400px;
+    max-width: 100%;
+     margin: 0 auto; 
+    } 
+    .image-wrapper {
+       display: flex; 
+       justify-content: center;
+       }
+   .product-view__image {
+    max-width: 800px; /* Povećajte maksimalnu širinu za velike ekrane */
+  }
+  /*Stilovi pocetak za Product */
+   .product-view {
+    max-width: 1200px; /* Ograničavamo širinu da tekst ne bude predugačak */
+    margin: 0 auto;
+    padding: 40px;
+  }
+
+  .product-view__main {
+    gap: 60px; /* Veći razmak između slike i teksta na velikim ekranima */
+  }
+
+  .product-view__title {
+    font-size: 2.5rem; /* Veći naslov za velike ekrane */
+  }
+
+  .product-view__description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: 30px 0;
+  }
+
+  .product-view__price {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  /*Stilovi kraj za Produkt*/
   .section.hero {
     display: flex;
     flex-direction: row-reverse;
@@ -404,6 +505,9 @@ padding-bottom: 20px;
   .spots-container {
     display: flex;
     justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px;
+  
   }
 
   .hero {

@@ -50,7 +50,8 @@ export function getSimilarProducts(productId, brand, limit = 3) {
 // 3. Pretraga proizvoda
 export function searchProducts(term) {
   const db = openDB();
-  return db.prepare("SELECT * FROM products WHERE namn LIKE ?").all(`%${term}%`);
+  // Pretvaramo i kolonu 'namn' i pretraživani 'term' u mala slova za poređenje
+  return db.prepare("SELECT * FROM products WHERE LOWER(namn) LIKE LOWER(?)").all(`%${term}%`);
 }
 // 4. Admin — lista svih proizvoda
 export function getAllProducts() {

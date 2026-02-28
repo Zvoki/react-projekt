@@ -8,7 +8,7 @@ export function popular(req, res) {
 export function productDetails(req, res) {
         const product = getProductBySlug(req.params.slug);
         if (!product) {
-                return res.status(404).json({ error: "Proizvod nije pronađen" });
+                return res.status(404).json({ error: "Produkt inte hittad" });
         }
         // Dohvati slične proizvode po brandu
         const similar = getSimilarProducts(product.id, product.brand);
@@ -34,7 +34,7 @@ JSON → React
 8 proizvoda za sekciju “Populära Produkter”. 
 */
 /**Kako funkcioniše productDetails()
- * ta radi?
+ * sta radi?
 Uzima slug iz URL‑a
 (npr. /products/svart-tshirt)
 
@@ -67,7 +67,7 @@ export async function getProductBySlug(slug) {
 
 Controller funkcija	SQL funkcija	Šta radi
 popular()	getPopularProducts()	vraća 8 proizvoda
-productDetails()	getProductBySlug(slug)	vraća 1 proizvod po slug‑u
+productDetails()getProductBySlug(slug)	vraća 1 proizvod po slug‑u
 
 Ukratko
 Controller = logika koja povezuje rute i bazu

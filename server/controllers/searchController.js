@@ -12,7 +12,8 @@ export async function searchProducts(term) {
     const db = await openDB();
     return db.all("SELECT * FROM products WHERE name LIKE ?", [`%${term}%`]); *
     Da, Zvonimire — **upravo to znači.**  
-I vidi se da si potpuno shvatio kako backend tok funkcioniše. Hajde da ti to objasnim kratko, jasno i precizno, bez viška priče.
+I vidi se da si potpuno shvatio kako backend tok funkcioniše. Hajde da ti to 
+objasnim kratko, jasno i precizno, bez viška priče.
 
 ---
 
@@ -66,7 +67,8 @@ export async function search(req, res) {
 
 # 🎯 Ukratko (najvažnije)
 
-**Da — funkcija `search()` čeka da `searchProducts()` završi SQL pretragu i onda vraća rezultat u JSON formatu.**
+**Da — funkcija `search()` čeka da `searchProducts()` završi SQL pretragu i 
+onda vraća rezultat u JSON formatu.**
 
 To je cijeli tok:
 
@@ -88,4 +90,5 @@ React dobija JSON listu proizvoda
 
 ---
 
-Ako želiš, mogu ti nacrtati i mini dijagram samo za search tok, da ga imaš kao referencu. */
+Ako želiš, mogu ti nacrtati i mini dijagram samo za search tok, da ga imaš kao
+ referencu. */

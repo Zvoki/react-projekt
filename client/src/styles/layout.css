@@ -433,9 +433,10 @@ padding-bottom: 20px;
 @media (min-width: 1024px) {
   /* Kada korisnik pređe mišem preko slike na velikim ekranima */
 .product-image {
-   width: 400px;
+   width: 450px;
     max-width: 100%;
      margin: 0 auto; 
+     height: fit-content;
     } 
     .image-wrapper {
        display: flex; 

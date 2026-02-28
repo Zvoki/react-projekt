@@ -54,7 +54,8 @@ export default function Product() {
 listu sličnih proizvoda; efekat za dohvat se ponovo pokreće svaki put kad se slug promijeni.
 
 Pregled
-Šta radi komponent: dohvaća /products/:slug s tvog servera, čuva rezultat u product stanju i renderuje stranicu proizvoda.
+Šta radi komponent: dohvaća /products/:slug s tvog servera, čuva rezultat u
+ product stanju i renderuje stranicu proizvoda.
 
 Gdje se koristi: obično na ruti poput /products/:slug u react-router-dom.
 
@@ -74,7 +75,9 @@ Inicijalno nema podataka; null znači da još čekamo odgovor.
 
 useEffect(() => { fetch(...).then(...).then(...) }, [slug]);
 
-Efekat se pokreće nakon prvog rendera i svaki put kad slug promijeni vrijednost. To znači da će komponent dohvatiti nove podatke kad korisnik klikne na drugi proizvod. 
+Efekat se pokreće nakon prvog rendera i svaki put kad slug promijeni vrijednost
+. To znači da će komponent dohvatiti nove podatke kad korisnik klikne na drugi
+ proizvod. 
 
 fetch(\http://localhost:3001/products/${slug}\) šalje GET zahtjev serveru; res.json() parsira JSON; setProduct(data) sprema podatke u stanje. Ovo je standardan pattern za dohvat podataka u Reactu. 
  * 
@@ -169,7 +172,8 @@ Ti proizvodi se smeste u products state.
 
 Kasnije možeš da ih prikažeš u JSX-u.
 
-Ako želiš, mogu ti i napisati kako da prikažeš te proizvode na ekranu ili da objasnim useEffect/useState još jednostavnije.
+Ako želiš, mogu ti i napisati kako da prikažeš te proizvode na ekranu ili da
+ objasnim useEffect/useState još jednostavnije.
 
 Naravno — objasniću ti ovo potpuno jednostavno, kao da prvi put vidiš React.
 

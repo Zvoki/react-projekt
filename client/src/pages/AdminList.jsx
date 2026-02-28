@@ -8,7 +8,7 @@ export default function AdminList() {
         fetch("http://localhost:8000/admin/products")
             .then(res => res.json())
             .then(data => setProducts(data))
-            .catch(err => console.error("Greška pri učitavanju:", err));
+            .catch(err => console.error("Fel när produkter skule visas:", err));
     }, []);
 
     return (

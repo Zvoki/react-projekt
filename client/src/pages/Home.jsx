@@ -22,10 +22,10 @@ export default function Home() {
             //  prikaže listu. Važno: setProducts je asinhrono u smislu React lifecyclea — ažuriranje stanja ne mijenja odmah products u istom 
             // ticku, ali će uzrokovati sljedeći render s novim vrijednostima.
             .then(data => {
-                console.log("Proizvodi učitani:", data);
+                console.log("Produkter lästa:", data);
                 setProducts(data);
             })
-            .catch(err => console.error("Greška pri učitavanju proizvoda:", err));
+            .catch(err => console.error("Fel när produkter skulle läsas:", err));
     }, []);
 
     // prikaži najviše 8 proizvoda

@@ -13,16 +13,19 @@ export async function adminCreate(req, res) {
 
 /*
 // 4. Admin — lista svih proizvoda
-export async function getAllProducts() {
-const db = await openDB();
-return db.all("SELECT * FROM all products"); 
+export function getAllProducts() {
+  const db = openDB();
+  return db.prepare("SELECT * FROM products").all();
 }
 // 5. Admin — dodavanje proizvoda
-export async function createProduct(product) {
-  const db = await openDB();
-  const { name, description, image, brand, sku, price, slug } = product;
-
-
+export function createProduct(product) {
+  const db = openDB();
+  const { namn, description, image_url, brand, sku, price, slug } = product;
+  return db.prepare(
+    `INSERT INTO products (namn, description, image_url, brand, sku, price, slug)
+     VALUES (?, ?, ?, ?, ?, ?, ?)`
+  ).run(namn, description, image_url, brand, sku, price, slug);
+}
 # 🧩 **1. Šta radi ovaj import?**
 
 ```js
@@ -92,7 +95,102 @@ export async function adminCreate(req, res) {
 ```
 
 ### ✔️ Šta se ovdje dešava?
+Drugo objasnjenje
+To je to — upravo si shvatio ključnu stvar, i to je veliki korak naprijed.  
+Ali hajde da to još malo “ispeglamo”, da bude potpuno jasno kako sve funkcioniše.
 
+---
+
+# 🔵 **Važno pojašnjenje: adminCreate NIJE u queries.js**
+
+Ovo je česta zabuna kod početnika, pa je super što si je primijetio.
+
+### ✔ **adminCreate se nalazi u `controllers/adminController.js`**  
+To je funkcija koja:
+
+export async function adminCreate(req, res) {
+ createProduct(req.body);
+  res.json({ message: "Product created" });
+}
+
+- prima podatke iz forme (`req.body`)
+- validira ih
+- generiše slug
+- priprema objekat proizvoda
+- poziva funkciju iz baze
+
+### ✔ **createProduct se nalazi u `db/queries.js`**  
+To je funkcija koja:
+
+- radi SQL `INSERT`
+- upisuje podatke u SQLite bazu
+
+Dakle:
+
+- **adminCreate → logika**
+- **createProduct → rad sa bazom**
+
+Oni rade zajedno, ali nisu u istom fajlu.
+
+---
+
+# 🟦 Kako to izgleda u lancu poziva
+
+### 1. **admin.js (ruta)** koja izgleda ovako:
+
+//server/routes/admin.js
+import express from "express";
+import { adminList, adminCreate } from "../controllers/adminController.js";
+
+const router = express.Router();
+
+router. get("/products", adminList);
+router.post("/products", adminCreate);
+export default router;  
+
+Poziva:
+```js
+adminCreate
+```
+
+### 2. **adminController.js**  
+Unutar `adminCreate` se poziva:
+```js
+createProduct(product)
+```
+export async function adminCreate(req, res) {
+ createProduct(req.body);
+  res.json({ message: "Product created" });
+}
+
+
+### 3. **queries.js**  
+Ovdje se izvršava SQL:
+
+```sql
+INSERT INTO products ...
+```
+// 5. Admin — dodavanje proizvoda
+export function createProduct(product) {
+  const db = openDB();
+  const { namn, description, image_url, brand, sku, price, slug } = product;
+  return db.prepare(
+    `INSERT INTO products (namn, description, image_url, brand, sku, price, slug)
+     VALUES (?, ?, ?, ?, ?, ?, ?)`
+  ).run(namn, description, image_url, brand, sku, price, slug);
+}
+
+---
+
+# 🟩 Ukratko (najbolje objašnjenje)
+
+> **adminCreate** je u kontroleru i služi za logiku.  
+> **createProduct** je u queries.js i služi za rad sa bazom.  
+> adminCreate poziva createProduct, ali oni nisu ista funkcija i nisu u istom fajlu.
+
+---
+
+Prvo objasnjenje
 1. Admin pošalje POST formu (name, price, sku…)
 2. Express ruta poziva `adminCreate()`
 3. `adminCreate()` uzima podatke iz `req.body`

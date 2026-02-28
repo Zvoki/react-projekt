@@ -33,5 +33,10 @@ export default function App() {
 
   );
 }
+/*<BrowserRouter> wraps the app to handle URL history.
+Nested routes let you reuse layouts (<Layout> or <AdminLayout>).
+Dynamic segment :slug is read by useParams() in the Product page.
+Admin pages live under /admin with their own layout, demonstrating route isolation.
+Changing the URL updates the view without a full page reload.*/
 
 

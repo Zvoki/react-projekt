@@ -30,7 +30,6 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
-
   );
 }
 /*<BrowserRouter> wraps the app to handle URL history.

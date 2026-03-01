@@ -17,7 +17,7 @@ export default function ProductCard({ product }) {
            </div> 
           <div className="info">
             <h3>{product.namn}</h3>
-            <p>{formatPrice(product.price)}</p>
+            <p>{typeof product.price === 'string' ? product.price : formatPrice(product.price)}</p>
             </div>  
         </Link>
     )

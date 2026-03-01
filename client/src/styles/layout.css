@@ -13,8 +13,9 @@
   width: 100%;            /* Forsira sliku da popuni širinu kartice */
   aspect-ratio: 1 / 1;    /* Veoma bitno: sve slike će biti iste visine (kvadratne) */
   object-fit: cover;      /* Slika će popuniti kvadrat bez razvlačenja */
-  border-radius: 8px;     /* Opciono: zaobljene ivice */
-  padding: 10px 10px 10px 10px;
+  border-radius: 8px;
+  display: block;     /* Opciono: zaobljene ivice */
+ /* padding: 10px 10px 10px 10px;*/
 }
 /* ===== HEADER (NOVI) ===== */
 
@@ -132,10 +133,8 @@
   position: relative;
   width: 100%;
   overflow: hidden; /*dodao sad*/
+  padding: 10px;
 }
-
-
-
 
 .heart-icon {
   position: absolute;
@@ -311,11 +310,14 @@ padding-bottom: 20px;
   cursor: pointer;
   margin-top: 10px;
 }
-
+.product-view__grid { display: grid; gap: 20px; }/* Ovo sam sada dodao*/
 /* Dovde Stilovi za mobilne ekrane (<640px) */
 
 @media (min-width: 640px) {
 /* Osnovni stilovi za velike ekrane (>640px) za Product.jsx */
+
+.product-view__grid { grid-template-columns: repeat(3, 1fr); }/* Ovo sam sada dodao*/
+
  .product-view__main {
     flex-direction: row; /* Slika levo, tekst desno */
     align-items: flex-start;
@@ -431,6 +433,7 @@ padding-bottom: 20px;
 }
 
 @media (min-width: 1024px) {
+  .product-view__grid { grid-template-columns: repeat(3, 1fr); }/*Ovo sam sada dodao*/
   /* Kada korisnik pređe mišem preko slike na velikim ekranima */
 .product-image {
    width: 450px;
@@ -548,8 +551,10 @@ padding-bottom: 20px;
 
 .image-container img.responsive {
   width: 100%;
+  
   display: block;
 }
+
 
 .overlay-text {
   position: absolute;
@@ -560,3 +565,10 @@ padding-bottom: 20px;
   font-weight: 600;
   z-index: 5;
 }
+.product-image {
+   max-width: 450px; /* slika može biti veća, ali ostaje responzivna */
+    width: 100%; 
+    height: auto; }
+    .image-wrapper {
+       display: block; /* uklanja flex koji je ranije pravio probleme */
+       }

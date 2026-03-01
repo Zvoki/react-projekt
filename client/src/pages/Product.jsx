@@ -1,3 +1,33 @@
+/**
+ * Product - Komponenta za prikaz detalja jednog proizvoda
+ * 
+ * @component
+ * @description
+ * Učitava i prikazuje detalje производа na osnovu slug-a iz URL-a.
+ * Slug NIJE ono što korisnik kuca u search bar - to je URL-friendly verzija
+ * imena proizvoda koja se generiše na backodu.
+ * 
+ * Primer:
+ * - Proizvod: "Levis 501 Black Jeans"
+ * - Slug: "levis-501-black-jeans"
+ * - URL ruta: /products/levis-501-black-jeans
+ * 
+ * @example
+ * // Korisnik klikne na kartu proizvoda ili linkuje direktno
+ * // URL postaje: https://example.com/products/levis-501-black-jeans
+ * // useParams izvlači "levis-501-black-jeans" iz URL-a
+ * // fetch ide na: http://localhost:3001/products/levis-501-black-jeans
+ * 
+ * @returns {JSX.Element} Stranica sa:
+ * - Slikom proizvoda
+ * - Nazivom, brendom, opisom, cenom
+ * - Dugme "Lägg i varukorg" (trenutno nefunkcionalno)
+ * - Lista od 3 slična proizvoda sa linkovima
+ * 
+ * @hook useParams - izvlači slug iz dinamičke rute
+ * @hook useState - čuva podatke o proizvodu
+ * @hook useEffect - učitava proizvod sa backenda kada se slug promeni
+ */
 /**prikazati detalje proizvoda 
 prikazati 3 slična proizvoda 
 dugme “Lägg i varukorg” ne radi ništa 
@@ -50,8 +80,9 @@ export default function Product() {
 }
 
 /*
-*Kratko: Ovaj komponent učitava detalje jednog proizvoda iz backend-a koristeći slug iz URL‑a, sprema odgovor u stanje i prikazuje podatke te 
-listu sličnih proizvoda; efekat za dohvat se ponovo pokreće svaki put kad se slug promijeni.
+*Kratko: Ovaj komponent učitava detalje jednog proizvoda iz backend-a koristeći slug iz URL‑a, 
+sprema odgovor u stanje i prikazuje podatke te listu sličnih proizvoda; efekat za dohvat se 
+ponovo pokreće svaki put kad se slug promijeni.
 
 Pregled
 Šta radi komponent: dohvaća /products/:slug s tvog servera, čuva rezultat u
@@ -79,7 +110,9 @@ Efekat se pokreće nakon prvog rendera i svaki put kad slug promijeni vrijednost
 . To znači da će komponent dohvatiti nove podatke kad korisnik klikne na drugi
  proizvod. 
 
-fetch(\http://localhost:3001/products/${slug}\) šalje GET zahtjev serveru; res.json() parsira JSON; setProduct(data) sprema podatke u stanje. Ovo je standardan pattern za dohvat podataka u Reactu. 
+fetch(\http://localhost:3001/products/${slug}\) šalje GET zahtjev serveru; res.json() parsira 
+JSON; setProduct(data) sprema podatke u stanje. Ovo je standardan pattern za dohvat 
+podataka u Reactu. 
  * 
  */
 

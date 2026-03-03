@@ -17,9 +17,6 @@ export default function Layout() {
   );
 }
 /**
-Naravno, Zvonimire — evo ti **jasno, temeljito i praktično objašnjenje** za tvoj `Layout.jsx`, baš onako kako voliš: modularno, razumljivo i korisno za tvoje učenje i buduće projekte.
-
----
 
 # 🧱 Što je zapravo Layout komponenta?
 
@@ -73,16 +70,12 @@ React će je koristiti kao “wrapper” za sve tvoje stranice.
     </>
   );
 }
-```
-
 ### Što se ovdje događa?
 
 ### 1. `<Header />`
 Prikazuje navigaciju, logo, search bar — sve što treba biti na vrhu svake stranice.
-
 ### 2. `<main>`
 Semantički HTML element za glavni sadržaj stranice.
-
 ### 3. `<Outlet />`
 Ovo je **najvažniji dio**.
 
@@ -107,15 +100,12 @@ Dakle rezultat u DOM‑u izgleda ovako:
 </main>
 <Footer />
 ```
-
 ### 4. `<Footer />`
 Prikazuje se na dnu svake stranice.
 
 ### 5. `<>...</>`
 React fragment — omogućava vraćanje više elemenata bez dodatnog wrapper `<div>`.
-
 ---
-
 # 🎯 Zašto je Layout ključan u React Routeru v6?
 
 Bez Layouta:
@@ -143,7 +133,6 @@ Tvoj App.jsx koristi nested routes:
   <Route path="/products/:slug" element={<Product />} />
 </Route>
 ```
-
 To znači:
 
 - Layout je parent

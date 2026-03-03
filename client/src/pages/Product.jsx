@@ -41,7 +41,8 @@ export default function Product() {
   const { slug } = useParams();
   const [product, setProduct] = useState(null);
 
-  useEffect(() => {
+  useEffect(() => {//Koristi useEffect da ponovo povuče
+  //  podatke svaki put kad se slug promeni.
     fetch(`http://localhost:8000/products/${slug}`)
 
       .then(res => res.json())

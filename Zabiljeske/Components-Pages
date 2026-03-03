@@ -1,0 +1,14 @@
+🎨 Prezentacione komponente (obično u components/)
+Primaju podatke kaoProps
+Samo prikazuju (render) — bez logike za fetch, state upravlјanja, itd.
+Primeri: ProductCard, Header, Footer, SmallIcons, Spots
+Lako se testiraju i ponovo koriste
+🧠 Pametne komponente (mogu biti bilo gde, ali često u pages/)
+Drže sopstveno stanje (useState)
+Dohvataju podatke (useEffect + fetch)
+Upravljaju logikom
+Primeri: Product.jsx, AdminList.jsx, Search.jsx
+✅ Pravilo
+pages/ = gotovo uvek pametne (stranice sa logikom)
+components/ = trebalo bi da budu prezentacione, ali mogu sadržati i malu logiku (npr. Header koji otvara/zatvara mobilni meni)
+Kratko: components su idealno prezentacioni elementi — oni le "kako nešto izgleda", dok pages rešavaju "gde su podaci i kako ih dobiti".

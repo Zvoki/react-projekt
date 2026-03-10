@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { formatPrice } from "../utils/formatPrice";
 
 export default function AdminList() {
     const [products, setProducts] = useState([]);
@@ -36,7 +37,10 @@ export default function AdminList() {
                             {/* Proveri da li tvoja baza vraća p.name ili p.namn kao u starom kodu */}
                             <td>{p.name || p.namn}</td>
                             <td>{p.sku}</td>
-                            <td>{p.price}</td>
+                            {/* {typeof p.price === 'string'
+                                ? p.price
+                                : formatPrice(p.price)}ako je cena već String (npr. "199 SEK") prikaži direktno, inace formatiraj broj */}
+                            <td>{formatPrice(p.price)}</td>
                         </tr>
                     ))}
                 </tbody>

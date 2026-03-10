@@ -1,19 +1,18 @@
 export function formatPrice(n) {
-  return `${n} SEK`;
+  if (n == null) return "";
+  return `${Number(n)} SEK`;
 }
-/**Primjer formatiranja cijene s dvije decimale i tisućnim separatorom:
- * export function formatPrice(n) {
-  return `${n.toLocaleString('sv-SE', { 
-    minimumFractionDigits: 2, 
-    maximumFractionDigits: 2 
-  })} SEK`;
-   formatPrice(999)      // "999,00 SEK"
-formatPrice(1500.5)   // "1 500,50 SEK"  (razmak kao tisućni separator)
-formatPrice(15000)    // "15 000,00 SEK"
-} 
-Što se dešava:
 
-toLocaleString() formatira broj prema švedskoj lokalizaciji (sv-SE)
-Dodaje zareze (,) za decimale
-Dodaje razmake kao tisućni separatori
-minimumFractionDigits: 2 osigurava 2 decimale*/
+/**export function formatPrice(n) {
+  if (n == null) return ""; 
+  return `${Number(n)} SEK`;
+}
+1) Number(n)
+Ponekad backend ili forma pošalju cijenu kao string "199".
+Number(n) osigurava da se uvijek pretvori u broj prije prikaza.
+
+2) if (n == null) return ""
+Ako se dogodi da cijena još nije učitana (npr. fetch kasni), izbjegavaš grešku i ružan prikaz undefined SEK.
+
+3) Formatiranje ostaje jednostavno
+Sada u bazi imaš samo broj, a prikaz uvijek dodaje " SEK"*/

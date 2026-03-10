@@ -1,0 +1,4 @@
+-- database: ./server/db/freaky.db
+
+SELECT * FROM products;
+ALTER TABLE products DROP COLUMN currency ;

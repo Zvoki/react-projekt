@@ -43,7 +43,7 @@ export default function Product() {
 
   useEffect(() => {//Koristi useEffect da ponovo povuče
   //  podatke svaki put kad se slug promeni.
-    fetch(`http://localhost:8000/products/${slug}`)
+    fetch(`${import.meta.env.VITE_API_URL}/products/${slug}`)
 
       .then(res => res.json())
       .then(data => setProduct(data));

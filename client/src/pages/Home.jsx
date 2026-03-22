@@ -14,7 +14,7 @@ export default function Home() {
  pre nego što se lista prikaže*/
     useEffect(() => {  
         // Fetch popular products from the server
-        fetch("http://localhost:8000/products/popular")
+        fetch(`${import.meta.env.VITE_API_URL}/products/popular`)
 
             //pokazuje tijelo odgovora kao JSON
             .then(res => res.json())

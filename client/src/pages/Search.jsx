@@ -30,7 +30,7 @@ export default function Search () {
 //koristio sam encodeURIComponent(q) pri fetchu da izbjegneš probleme sa specijalnim znakovima.
 
     useEffect  (() => {
-        fetch(`http://localhost:8000/search?q=${encodeURIComponent(q)}`)
+        fetch(`${import.meta.env.VITE_API_URL}/search?q=${encodeURIComponent(q)}`)
         .then(res => res.json())
         .then(data => setResults(data));
     }, [q]);

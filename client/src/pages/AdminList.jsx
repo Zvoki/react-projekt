@@ -6,7 +6,7 @@ export default function AdminList() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:8000/admin/products")
+        fetch("${import.meta.env.VITE_API_URL}/admin/products")
             .then(res => res.json())
             .then(data => setProducts(data))
             .catch(err => console.error("Fel när produkter skule visas:", err));

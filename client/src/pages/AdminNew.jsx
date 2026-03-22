@@ -22,7 +22,7 @@ export default function AdminNew() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("http://localhost:8000/admin/products", {
+    fetch("${import.meta.env.VITE_API_URL}/admin/products", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form)

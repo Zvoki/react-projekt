@@ -8,7 +8,7 @@ import cors from "cors"
 
 const port = process.env.PORT || 8000;
 const app = express();
-
+const path = require("path");
 app.use(express.json());/*omogućava serveru da automatski čita JSON iz request 
 body‑ja(npr. POST /login sa { "email": "...", "password": "..." })
 Korisnik popuni formu 
@@ -51,7 +51,11 @@ Ona postaje: GET /products
 app.use("/products", productsRouter);
 app.use("/search", searchRouter);
 app.use("/admin", adminRouter);
+app.use(express.static(path.join(__dirname, "client/build")));
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
 
 app.listen(port, () => {
   console.log("Server running on port", port);

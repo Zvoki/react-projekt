@@ -1,0 +1,286 @@
+Zvonimire, ovo je jedan od **najjasnijih i najkorisnijih logova** koje Render može dati — i odmah ti mogu reći tačno šta se dešava, bez nagađanja.
+
+---
+
+# ❗ **Tumačenje greške: Render NE MOŽE pronaći `package.json`**
+
+U logu piše:
+
+```
+npm error enoent Could not read package.json:
+Error: ENOENT: no such file or directory, open '/opt/render/project/src/package.json'
+```
+
+To znači:
+
+👉 Render je klonirao tvoj repo  
+👉 Ušao je u folder `/opt/render/project/src`  
+👉 Očekivao je da tu postoji **package.json**  
+👉 Ali ga **nema**  
+👉 Zato build ne može ni da počne
+
+Drugim riječima:
+
+# 🔥 Render ne zna gdje se nalazi tvoj frontend projekt.
+
+---
+
+# 🔍 **Zašto se ovo dešava?**
+
+Pogledao sam tvoj GitHub repo u drugom tabu koji imaš otvoren (react-projekt) i vidim šta se dešava:
+
+### ✔️ Tvoj repo **react-projekt** izgleda ovako:
+
+```
+react-projekt/
+   client/
+      package.json
+      vite.config.js
+      src/
+```
+
+Dakle:
+
+- **package.json nije u root-u**
+- nalazi se u folderu **client**
+
+Render očekuje da je frontend projekt u root-u, ali kod tebe je u podfolderu.
+
+Zato Render traži:
+
+```
+/opt/render/project/src/package.json
+```
+
+A tvoj fajl je zapravo:
+
+```
+/opt/render/project/src/client/package.json
+```
+
+I zato build pada.
+
+---
+
+# ✅ **Kako ovo popraviti (najbrže i najčistije)**
+
+Render ti dozvoljava da postaviš **Root Directory**.
+
+To je folder u kojem se nalazi tvoj frontend.
+
+U tvom slučaju to je:
+
+👉 **client**
+
+---
+
+# 🔧 **Šta trebaš uraditi na Renderu**
+
+1. Otvori svoj Static Site servis  
+2. Idi na **Settings**  
+3. Nađi sekciju **Build & Deploy**  
+4. Nađi polje **Root Directory**  
+5. Upisi:
+
+```
+client
+```
+
+6. Sačuvaj  
+7. Klikni **Deploy latest commit**
+
+---
+
+# 🔵 Nakon toga Render će raditi ovako:
+
+Umjesto:
+
+```
+/opt/render/project/src/package.json
+```
+
+koristiće:
+
+```
+/opt/render/project/src/client/package.json
+```
+
+I build će proći bez greške.
+
+---
+
+# 🟢 **Šta još treba podesiti nakon Root Directory**
+
+U istom servisu:
+
+### Build Command:
+```
+npm install && npm run build
+```
+
+### Publish Directory:
+```
+dist
+```
+
+Ali pošto je projekt u `client`, Render će automatski koristiti:
+
+```
+client/dist
+```
+
+što je ispravno.
+
+---
+
+# 🎯 Ukratko: greška je 100% zbog toga što je frontend u folderu `client/`
+
+I to se rješava tako što Renderu kažeš da je **Root Directory = client**.
+
+---
+
+Ako želiš, mogu sada pogledati i backend servis da potvrdim da je sve 
+savršeno postavljeno — ili te mogu voditi kroz svaki klik da ovo završiš bez
+ stresa.
+
+ # Adresa linkova
+ Sjajno, Zvonimire — frontend ti je sada **live**, i to je ogroman korak.  
+Sada samo treba da ga **povežeš sa backendom** koji si već deployao kao Web Service.  
+I to je zapravo vrlo jednostavno kada znaš tačno šta treba uraditi.
+
+Da ti dam najjasniji mogući vodič, baš onako kako voliš: praktično, precizno i bez gubljenja vremena.
+
+---
+
+# 🔵 1. Prvo: treba ti URL tvog backend servisa  
+Na Renderu otvori svoj backend Web Service.
+
+Na vrhu ćeš vidjeti nešto ovako:
+
+```
+https://ime-tvog-backenda.onrender.com
+```
+
+To je **BASE URL** tvog API-ja.
+
+Primjer ruta:
+
+```
+/api/users
+/api/login
+/api/products
+```
+
+Kombinacija izgleda ovako:
+
+```
+https://ime-tvog-backenda.onrender.com/api/users
+```
+
+To je ono što frontend treba da zove.
+
+---
+
+# 🔵 2. U frontend kodu zamijeni lokalni URL sa Render URL-om
+
+U React projektima obično imaš nešto ovako:
+
+```js
+fetch("http://localhost:3000/api/users")
+```
+
+To sada treba da postane:
+
+```js
+fetch("https://ime-tvog-backenda.onrender.com/api/users")
+```
+
+Ako koristiš axios:
+
+```js
+axios.get("https://ime-tvog-backenda.onrender.com/api/users")
+```
+
+---
+
+# 🔵 3. Najbolja praksa: koristi `.env` fajl u frontendu
+
+U folderu **client** napravi fajl:
+
+```
+.env
+```
+
+I dodaj:
+
+```
+VITE_API_URL=https://ime-tvog-backenda.onrender.com
+```
+
+Zatim u React kodu koristi:
+
+```js
+const API = import.meta.env.VITE_API_URL;
+
+fetch(`${API}/api/users`);
+```
+
+Ovo je profesionalno rješenje koje poslodavci vole vidjeti.
+
+---
+
+# 🔵 4. Ponovo deployaj frontend
+
+Pošto si promijenio kod:
+
+1. `git add .`
+2. `git commit -m "Connect frontend to backend"`
+3. `git push`
+
+Render će automatski pokrenuti novi deploy.
+
+---
+
+# 🔵 5. Provjeri CORS na backendu
+
+Ako koristiš Express, u backendu moraš imati:
+
+```js
+import cors from "cors";
+app.use(cors());
+```
+
+Ako želiš ograničiti samo na frontend URL:
+
+```js
+app.use(cors({
+  origin: "https://tvoj-frontend.onrender.com"
+}));
+```
+
+Bez ovoga frontend neće moći zvati backend.
+
+---
+
+# 🔵 6. Testiraj
+
+U browseru otvori:
+
+```
+https://ime-tvog-backenda.onrender.com/api/users
+```
+
+Ako vidiš JSON → backend radi.
+
+Zatim otvori frontend URL i probaj funkcionalnosti.
+
+---
+
+# 🔵 Ako želiš, mogu pogledati tvoj backend Web Service i reći ti tačno:
+
+- koji ti je backend URL  
+- da li imaš CORS  
+- gdje tačno u React kodu trebaš promijeniti URL  
+- da li trebaš `.env` ili direktno u kodu  
+
+Samo mi reci ime backend servisa na Renderu ili pošalji URL — i završavamo ovo do kraja bez ikakvog gubljenja vremena.

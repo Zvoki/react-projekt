@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { formatPrice } from "../utils/formatPrice";
-
+const API = import.meta.env.VITE_API_URL;
 export default function AdminList() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch("${import.meta.env.VITE_API_URL}/admin/products")
+        fetch(`${API}/admin/products`)
+
             .then(res => res.json())
             .then(data => setProducts(data))
             .catch(err => console.error("Fel när produkter skule visas:", err));

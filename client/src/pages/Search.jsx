@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 //  navigacijske linkove bez reloada stranice.
 import { useSearchParams, Link } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
-
+const API = import.meta.env.VITE_API_URL;
 //params.get("q") čita vrijednost parametra q iz query 
 // stringa, npr. ako je URL /search?q=telefon, q će biti 
 // "telefon".
@@ -30,7 +30,7 @@ export default function Search () {
 //koristio sam encodeURIComponent(q) pri fetchu da izbjegneš probleme sa specijalnim znakovima.
 
     useEffect  (() => {
-        fetch(`${import.meta.env.VITE_API_URL}/search?q=${encodeURIComponent(q)}`)
+        fetch(`${API}/search?q=${encodeURIComponent(q)}`)
         .then(res => res.json())
         .then(data => setResults(data));
     }, [q]);

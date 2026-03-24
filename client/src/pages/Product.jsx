@@ -40,10 +40,11 @@ import ProductCard from "../components/ProductCard";
 export default function Product() {
   const { slug } = useParams();
   const [product, setProduct] = useState(null);
+const API = import.meta.env.VITE_API_URL; 
 
   useEffect(() => {//Koristi useEffect da ponovo povuče
   //  podatke svaki put kad se slug promeni.
-    fetch(`${import.meta.env.VITE_API_URL}/products/${slug}`)
+    fetch(`${API}/products/${slug}`)
 
       .then(res => res.json())
       .then(data => setProduct(data));

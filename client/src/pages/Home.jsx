@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Spots from "../components/Spots";
 import ProductCard from "../components/ProductCard";
 import Hero from "../components/Hero";
-
+const API = import.meta.env.VITE_API_URL;
 
 export default function Home() {
     const [products, setProducts] = useState([]);
@@ -14,7 +14,7 @@ export default function Home() {
  pre nego što se lista prikaže*/
     useEffect(() => {  
         // Fetch popular products from the server
-        fetch(`${import.meta.env.VITE_API_URL}/products/popular`)
+        fetch(`${API}/products/popular`)
 
             //pokazuje tijelo odgovora kao JSON
             .then(res => res.json())

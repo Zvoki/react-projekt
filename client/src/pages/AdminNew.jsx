@@ -3,6 +3,7 @@
 //pages/AdminNew.jsx:
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+const API = import.meta.env.VITE_API_URL;
 
 export default function AdminNew() {
   const nav = useNavigate();
@@ -22,7 +23,7 @@ export default function AdminNew() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("${import.meta.env.VITE_API_URL}/admin/products", {
+    fetch(`${API}/admin/products`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form)

@@ -10,8 +10,9 @@ const port = process.env.PORT || 8000;
 const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:3002",
-  "https://react-projekt-yw6b.onrender.com"
-  
+  "https://react-projekt-yw6b.onrender.com", // backend
+  "https://react-projekt-frontend.onrender.com"   // frontend
+
 ];
 const app = express();
 

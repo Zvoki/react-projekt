@@ -4,13 +4,14 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+     "start": "node server.js",
     "dev": "node server.js",
     "postinstall": "npm rebuild better-sqlite3 --build-from-source"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
+ "type": "module",
   "dependencies": {
     "better-sqlite3": "^12.6.2",
     "cors": "^2.8.6",

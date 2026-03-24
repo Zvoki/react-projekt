@@ -7,6 +7,12 @@ import { initializeSlugs } from "./db/queries.js";
 import cors from "cors"
 
 const port = process.env.PORT || 8000;
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:3002",
+  "https://react-projekt-yw6b.onrender.com"
+  
+];
 const app = express();
 
 app.use(express.json());/*omogućava serveru da automatski čita JSON iz request 
@@ -23,7 +29,7 @@ req.body = {
 */
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3002'],
+  origin: allowedOrigins,
   credentials: true //Dozvoljavaš slanje kolačića / tokena (credentials: true)
 }));
 

@@ -1,6 +1,6 @@
-//forma za dodavanje proizvoda 
-//nakon submit → redirect na listu 
-//pages/AdminNew.jsx:
+//form for adding products
+//after submit → redirect to the list
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const API = import.meta.env.VITE_API_URL;
@@ -33,10 +33,10 @@ export default function AdminNew() {
   return (
     <section>
       <h1>Ny produkt</h1>
-      {/* Dodajemo klasu form-column koju tvoj CSS već ima */}
+      {}
       <form onSubmit={handleSubmit} className="form-column">
         
-        {/* Svaki label ima htmlFor koji se poklapa sa id-om na inputu */}
+        {}
       
       <label htmlFor="namn">Namn</label>
       <input 
@@ -45,7 +45,7 @@ export default function AdminNew() {
         value={form.namn} 
         onChange={handleChange} 
         required 
-        //autoComplete="name" 
+       
       />
 
       <label htmlFor="description">Beskrivning</label>

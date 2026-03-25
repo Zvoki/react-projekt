@@ -5,7 +5,7 @@ export default function SmallIcons() {
     { img: "/images/shield-fill.svg", text: "Säkra betalningar" },
     { img: "/images/emoji-smile-fill.svg", text: "Nyheter varje dag" }
   ];
-
+// SmallIcons.jsx A section with small icons and text, placed above the footer.
   return (
     <section className="small-icons-section">
       <div className="smaikoner">

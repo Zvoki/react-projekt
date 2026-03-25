@@ -1,7 +1,4 @@
-/*logo vodi na / 
-search bar 
-navigacija: Nyheter, Topplistan, Rea, Kampanjer 
-*/
+
 // src/components/Header.jsx
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -18,7 +15,7 @@ export default function Header() {
   return (
     <header className="header">
 
-      {/* RED 1 — Logo + Search + Ikone */}
+      {/* RED 1 — Logo + Search + Ikoner */}
       <div className="header-top">
 
         {/* Logo */}
@@ -31,7 +28,7 @@ export default function Header() {
         {/* Search + Ikone */}
         <div className="logo-bottom">
 
-          {/* Search bar  ovo sam dodao ispod  className="input-field" id="search-input" name="q"*/}
+          {/* Search bar */}
           <form className="search-bar" onSubmit={handleSubmit}>
             <input className="input-field" id="search-input" name="q"
               type="search"
@@ -49,7 +46,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* RED 2 — Navbar */}
+      {/* RAD 2 — Navbar */}
       <div className="navbar">
         <ul className="tags">
           <li><Link to="/">Hem</Link></li>

@@ -2,11 +2,11 @@ export default function MenuAndFooter() {
   return (
     <div>
 
-      {/* MOBILNI MENI + FOOTER (prikazuje se samo < 640px) */}
+      {/* MOBILNI MENI + FOOTER */}
       <div className="container-fluid my-4 hide-640-1024">
 
 
-        {/* Shopping red – iznad accordiona */}
+        {/* Shopping red  */}
         <div className="footer-row shopping-row">
           <p>Shopping</p>
         </div>
@@ -123,7 +123,7 @@ export default function MenuAndFooter() {
           </div>
         </div>
 
-        {/* Footer ispod accordiona */}
+        {/* Footer */}
         <div className="footer-row links-row">
           <p>Mina Sidor</p>
           <p>Kundtjänst</p>
@@ -133,7 +133,7 @@ export default function MenuAndFooter() {
         </div>
       </div>
 
-      {/* DESKTOP FOOTER (prikazuje se >= 640px) */}
+      {/* DESKTOP FOOTER (>= 640px) */}
       <footer className="footer-desktop">
 
         <div className="footer-columns">

@@ -1,5 +1,9 @@
 
 // src/components/AdminLayout.jsx
+// This component serves as the layout for all admin-related pages. 
+// It includes a header, a sidebar for navigation, and a main content area 
+// where the specific admin page will be rendered based on the route.
+
 import { Outlet, Link } from "react-router-dom";
 import "../styles/admin-style.css";
 
@@ -12,14 +16,14 @@ export default function AdminLayout() {
 
       <div className="container">
         <aside className="sidebar">
-          {/* Ovde možeš dodati linkove za sidebar kasnije */}
+          {}
           <nav>
             <Link to="/admin/products">Produkter</Link>
           </nav>
         </aside>
 
         <main className="main-content">
-          <Outlet /> {/* Ovde će React ubaciti AdminList ili AdminNew */}
+          <Outlet /> {}
         </main>
       </div>
     </div>

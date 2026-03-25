@@ -13,7 +13,7 @@ import './App.css'
 
 export default function App() {
 
-  
+  // The App component sets up client-side routing using React Router.
   return (
     <BrowserRouter>
       <Routes>
@@ -22,7 +22,7 @@ export default function App() {
           <Route path='/search' element={<Search />} />
           <Route path="/products/:slug" element={<Product />} />
           </Route>
-        {/* ADMIN DEO: Potpuno odvojen izgled */}
+        {/* ADMIN */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="products" element={<AdminList />} />
           <Route path="products/new" element={<AdminNew />} />

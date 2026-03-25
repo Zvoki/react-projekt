@@ -1,0 +1,95 @@
+Zvonimire, hvala ti što si poslao `App.jsx` — sada mogu da potvrdim nešto veoma važno:
+
+# ✅ **Tvoj React Router je potpuno ispravno podešen.**  
+Rute za admin dio postoje i tačno su definisane:
+
+- `/admin/products` → **AdminList**
+- `/admin/products/new` → **AdminNew**
+
+I sve je ugniježđeno ispod `AdminLayout`, što je savršeno.
+
+Dakle — **frontend rute nisu problem**.
+
+---
+
+# 🚨 Ali Render Static Site *ne zna* da koristi React Router  
+I zato kada otvoriš:
+
+```
+https://react-projekt-frontend.onrender.com/admin/products
+```
+
+Render pokušava da pronađe fizički fajl:
+
+```
+/admin/products/index.html
+```
+
+Pošto taj fajl ne postoji (jer React je SPA), Render vraća:
+
+```
+Not found
+```
+
+Ovo je 100% normalno i dešava se svima koji deployaju React Router na Render.
+
+---
+
+# 🔥 RJEŠENJE (100% radi)
+
+Moraš dodati **Rewrite Rule** u Render Static Site.
+
+### 1. Idi na svoj frontend na Renderu  
+**Static Site → Settings → Redirects / Rewrites**
+
+### 2. Dodaj ovo pravilo:
+
+| Source | Destination | Type |
+|--------|-------------|------|
+| `/*` | `/index.html` | Rewrite |
+
+### 3. Sačuvaj i redeployaj frontend
+
+---
+
+# 🟩 Šta ovo radi?
+
+- Bilo koja ruta (npr. `/admin/products`)
+- vraća `index.html`
+- React Router preuzima kontrolu
+- i prikazuje pravu stranicu
+
+Nakon ovoga:
+
+- `/admin/products` će raditi  
+- `/admin/products/new` će raditi  
+- sve tvoje React rute će raditi kao lokalno  
+
+---
+
+# 🧠 Zašto backend URL ne radi kao stranica?
+
+Kada otvoriš:
+
+```
+https://react-projekt-yw6b.onrender.com/admin/products
+```
+
+backend ti vraća **JSON**, što je ispravno.
+
+Ali backend **nije** zadužen da prikazuje HTML stranice — to radi React.
+
+---
+
+# 🎉 Ukratko
+
+- Tvoj React Router je ispravan  
+- Tvoj backend radi  
+- Tvoj fetch radi  
+- Tvoj `.env` radi  
+
+**Jedino što nedostaje je Render rewrite rule.**
+
+Dodaj ga i admin dio će proraditi odmah.
+
+Ako želiš, mogu ti pomoći i da provjerimo `AdminNew`, upload slika, SQLite upise ili bilo šta drugo što ti treba.

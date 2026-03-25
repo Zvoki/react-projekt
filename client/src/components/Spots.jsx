@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-
+// Spots container with 3 spots. Each spot has an image, title, description,
+//  and link to a specific page.
 export default function Spots() {
   const spots = [
     { id: 1, title: "Spot 1", desc: "Spot beskrivning 1", image: "/images/110x50.svg", link: "/spot1" },

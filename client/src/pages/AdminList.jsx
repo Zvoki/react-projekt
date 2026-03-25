@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { formatPrice } from "../utils/formatPrice";
 const API = import.meta.env.VITE_API_URL;
+
+// Fetch admin products
 export default function AdminList() {
     const [products, setProducts] = useState([]);
 
@@ -15,7 +17,7 @@ export default function AdminList() {
 
     return (
         <section>
-            {/* Ovaj deo pravi identičan raspored kao u starom projektu */}
+            {}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <h1>Produkter</h1>
                 <Link to="/admin/products/new">
@@ -35,12 +37,10 @@ export default function AdminList() {
                 <tbody>
                     {products.map(p => (
                         <tr key={p.id || p.sku}>
-                            {/* Proveri da li tvoja baza vraća p.name ili p.namn kao u starom kodu */}
+                            {}
                             <td>{p.name || p.namn}</td>
                             <td>{p.sku}</td>
-                            {/* {typeof p.price === 'string'
-                                ? p.price
-                                : formatPrice(p.price)}ako je cena već String (npr. "199 SEK") prikaži direktno, inace formatiraj broj */}
+                            {}
                             <td>{formatPrice(p.price)}</td>
                         </tr>
                     ))}

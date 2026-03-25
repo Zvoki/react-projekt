@@ -1,68 +1,120 @@
-# React Project
+# React E‑commerce Project
 
-This is a full-stack application created as a student project and intended for portfolio presentation. The app implements a simple e-commerce platform where users can search for products, view details, and administer the product list.
+A full‑stack e‑commerce application built as part of my frontend development studies.
+The project demonstrates skills in React, Express, REST API design, routing, database work, and deployment to Render.
 
-## Technologies
+## Live Demo
 
-- **Frontend**: React 18 with Vite as the bundler, modern JavaScript, CSS
-- **Backend**: Node.js with Express, SQLite database
-- **Tooling**: ESLint, Vite, npm/yarn
+Frontend (User Interface)
+https://react-projekt-frontend.onrender.com
+Admin Panel
+https://react-projekt-frontend.onrender.com/admin/products 
+(Admin UI built in React – no login required for demo purposes)
+Backend API
+https://react-projekt-yw6b.onrender.com
+Example API endpoints:
+Popular products:
+https://react-projekt-yw6b.onrender.com/products/popular (react-projekt-yw6b.onrender.com in Bing) 
+All products (admin):
+https://react-projekt-yw6b.onrender.com/admin/products 
 
 ## Features
 
-1. Home page with search and product listing
-2. Product page displaying item details
-3. Admin section:
-   - View all products
-   - Add a new product with name, description, and price
-4. Price formatting, slugs for URLs, and simple routing
+User-facing
+Browse products on the home page
+View product details
+Search for products
+Clean and responsive layout
+Admin Panel
+View all products in a table.
+Add a new product (name, description, price, SKU)
+Automatic slug generation
+Price formatting and validation
+Backend
+REST API built with Express
+SQLite database
+Controllers, routes, and query separation
+CORS configured for production
+Slug initialization on startup
+
+## Responsive Design
+
+The application is fully responsive and optimized for three key screen sizes:
+< 640px — Mobile devices
+Simplified layout
+Vertical stacking of elements
+Adjusted typography and spacing for small screens
+≥ 640px — Tablets and small laptops
+Two‑column layout where appropriate
+Larger product images
+Improved navigation and spacing
+≥ 1024px — Desktop screens
+Full‑width layout
+Grid‑based product display (e.g., 4×2 products)
+Expanded admin panel layout for better usability
+Responsiveness is implemented using CSS media queries, flexbox, and grid to ensure a consistent and user‑friendly experience across all devices.
+
+## Tech Stack
+
+Frontend
+React 18
+Vite
+React Router
+CSS modules
+Backend
+Node.js
+Express
+SQLite
+Render (Static Site + Web Service)
+Environment variables
+Production CORS setup
 
 ## Project Structure
 
-```
 client/        # React frontend
    src/
-      components/...
-      pages/...
+      components/
+      pages/
+      styles/
+      utils/
+
 server/        # Express backend
    controllers/
    routes/
    db/
-```
+   server.js
 
 ## Running Locally
 
-1. Clone the repository and change into the project directory:
-   ```bash
-   git clone <repo-url>
-   cd react-projekt
-   ```
+1. Clone the repository
+git clone <repo-url>
+cd react-projekt
+2. Start the backend
+cd server
+npm install
+npm start
+3. Start the frontend
+cd client
+npm install
+npm run dev
+Frontend: http://localhost:5173
+Backend: http://localhost:8000
 
-2. Start the backend server:
-   ```bash
-   cd server
-   npm install
-   npm start
-   ```
+## Purpose of the Project
 
-3. Open a new terminal and start the frontend:
-   ```bash
-   cd client
-   npm install
-   npm run dev
-   ```
+This project was created as part of my education at EC Utbildning to demonstrate:
+ability to build a full-stack application
+understanding of React and component architecture
+REST API design with Express
+database work with SQLite
+deployment of both frontend and backend
+problem‑solving and debugging skills
+It is included in my portfolio for internship (LIA) applications.
 
-4. Visit [http://localhost:5173](http://localhost:5173) for the frontend and [http://localhost:3000](http://localhost:3000) for the API.
+## Contact
 
-## Development Notes
-
-- The database is stored in the SQLite file (`server/db/freaky.sqlite3-query`).
-- Routes under `server/routes` are organized by feature.
-
-## Why This Project?
-
-It serves as an example of a simple full-stack application showcasing skills in React, Node/Express, and working with a database. It can be extended with additional functionality as needed.
-
----
-
-*(This README was created to explain the project as part of a portfolio for applying to an internship.)*
+Zvonimir Juric
+Frontend Developer Student
+Mobile: +46 76 58 06 343
+Email: zvonimir.juric@utb.ecutbildning.se
+Fridlevstad, Sweden

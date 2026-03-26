@@ -8,15 +8,13 @@ The project demonstrates skills in React, Express, REST API design, routing, dat
 Frontend (User Interface)
 https://react-projekt-frontend.onrender.com
 Admin Panel
-https://react-projekt-frontend.onrender.com/admin/products 
+https://react-projekt-frontend.onrender.com/admin/products
 (Admin UI built in React – no login required for demo purposes)
-Backend API
-https://react-projekt-yw6b.onrender.com
 Example API endpoints:
 Popular products:
-https://react-projekt-yw6b.onrender.com/products/popular (react-projekt-yw6b.onrender.com in Bing) 
+https://react-projekt-yw6b.onrender.com/products/popular (react-projekt-yw6b.onrender.com in Bing)
 All products (admin):
-https://react-projekt-yw6b.onrender.com/admin/products 
+https://react-projekt-yw6b.onrender.com/admin/products
 
 ## Features
 

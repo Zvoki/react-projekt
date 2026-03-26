@@ -97,7 +97,7 @@ npm start
 cd client
 npm install
 npm run dev
-Frontend: http://localhost:5173
+Frontend: http://localhost:3000
 Backend: http://localhost:8000
 
 ## Purpose of the Project

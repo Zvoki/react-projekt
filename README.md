@@ -114,7 +114,7 @@ It is included in my portfolio for internship (LIA) applications.
 ## Contact
 
 Zvonimir Juric
-Frontend Developer Student
+Frontend Developer Student EC Utbildning
 Mobile: +46 76 58 06 343
 Email: zvonimir.juric@utb.ecutbildning.se
 Fridlevstad, Sweden

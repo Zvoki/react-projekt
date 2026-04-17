@@ -450,6 +450,9 @@ padding-bottom: 20px;
 }
 
 @media (min-width: 1024px) {
+  .figcaption {
+    position: relative;
+  }
   .product-view__grid { grid-template-columns: repeat(3, 1fr); }/*Ovo sam sada dodao*/
   /* Kada korisnik pređe mišem preko slike na velikim ekranima */
   .product-image {

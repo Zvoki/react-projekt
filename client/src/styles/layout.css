@@ -246,6 +246,11 @@ padding-bottom: 20px;
 }
 
 /* Stilovi za sekciju smaikoner */
+.small-icons-section {
+  display: flex;
+  justify-content: center;
+}
+
 .smaikoner {
   display: flex;
   flex-direction: column;
@@ -253,6 +258,8 @@ padding-bottom: 20px;
   align-items: flex-start;
   gap: 20px;
   padding: 10px 0 10px 10px;
+  width: min(100%, 640px);
+  margin: 0 auto;
   /*top, right, bottom i left*/
 }
 
@@ -423,9 +430,15 @@ padding-bottom: 20px;
 
   .smaikoner {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, minmax(10px, auto));
-
+    grid-template-columns: repeat(2, minmax(0, 220px));
+    grid-auto-rows: auto;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: min(100%, 520px);
+    margin: 0 auto;
   }
 
   .smal>img {
@@ -439,16 +452,16 @@ padding-bottom: 20px;
 @media (min-width: 1024px) {
   .product-view__grid { grid-template-columns: repeat(3, 1fr); }/*Ovo sam sada dodao*/
   /* Kada korisnik pređe mišem preko slike na velikim ekranima */
-.product-image {
-   width: 450px;
+  .product-image {
+    width: min(100%, 700px);
     max-width: 100%;
-     margin: 0 auto; 
-     height: fit-content;
-    } 
-    .image-wrapper {
-       display: flex; 
-       justify-content: center;
-       }
+    margin: 0 auto;
+    height: auto;
+  }
+  .image-wrapper {
+    display: flex;
+    justify-content: center;
+  }
    .product-view__image {
     max-width: 800px; /* Povećajte maksimalnu širinu za velike ekrane */
   }
@@ -499,10 +512,22 @@ padding-bottom: 20px;
     width: 30px;
     height: 30px;
   }
+  .info >h3 {
+font-size: 1rem;
+  }
 
   .smaikoner {
     display: grid;
+    grid-template-columns: repeat(2, minmax(0, 240px));
+    grid-auto-rows: auto;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
     align-items: center;
+    column-gap: 12rem;
+    row-gap: 1rem;
+    width: min(100%, 600px);
+    margin: 0 auto;
   }
 
   .smal>img {
@@ -571,9 +596,10 @@ padding-bottom: 20px;
   z-index: 5;
 }
 .product-image {
-   max-width: 450px; /* slika može biti veća, ali ostaje responzivna */
-    width: 100%; 
-    height: auto; }
-    .image-wrapper {
-       display: block; /* uklanja flex koji je ranije pravio probleme */
-       }
+  max-width: 700px; /* slika može biti veća, ali ostaje responzivna */
+  width: 100%;
+  height: auto;
+}
+.image-wrapper {
+  display: block; /* uklanja flex koji je ranije pravio probleme */
+}

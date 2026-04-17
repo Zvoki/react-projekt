@@ -496,12 +496,13 @@ padding-bottom: 20px;
   }
 
   .icons img {
-    width: 70px;
-    height: 70px;
+    width: 30px;
+    height: 30px;
   }
 
   .smaikoner {
     display: grid;
+    align-items: center;
   }
 
   .smal>img {

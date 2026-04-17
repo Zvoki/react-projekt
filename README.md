@@ -85,7 +85,7 @@ server/        # Express backend
 ## Running Locally
 
 1. Clone the repository
-git clone <repo-url>
+git clone https://github.com/Zvoki/react-projekt
 cd react-projekt
 2. Start the backend
 cd server
